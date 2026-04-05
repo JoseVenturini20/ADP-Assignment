@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node server.ts",
     "test": "jest",
-    "lint": "eslint app/ tests/"
+    "lint": "eslint 'app/**/*.ts' 'tests/**/*.ts' 'server.ts'"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +18,8 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.5.2",
+    "@typescript-eslint/eslint-plugin": "^8.58.0",
+    "@typescript-eslint/parser": "^8.58.0",
     "eslint": "^10.2.0",
     "jest": "^30.3.0",
     "ts-node": "^10.9.2",
