@@ -4,22 +4,37 @@
   "description": "ADP Ventures Brazil Labs Interview Assessment - Transaction Dashboard",
   "main": "server.ts",
   "scripts": {
-    "start": "ts-node server.ts",
+    "build": "esbuild src/index.tsx --bundle --minify --outfile=public/js/bundle.js",
+    "build:watch": "esbuild src/index.tsx --bundle --outfile=public/js/bundle.js --watch",
+    "start": "npm run build && ts-node server.ts",
+    "dev": "npm run build && ts-node server.ts",
     "test": "jest",
-    "lint": "eslint 'app/**/*.ts' 'tests/**/*.ts' 'server.ts'"
+    "lint": "eslint 'app/**/*.ts' 'src/**/*.{ts,tsx}' 'tests/**/*.ts' 'server.ts'",
+    "lint:fix": "npm run lint -- --fix",
+    "typecheck": "tsc --noEmit",
+    "validate": "npm run typecheck && npm run lint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.9",
+    "@mui/material": "^7.3.9",
     "axios": "1.14.0",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.5.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.58.0",
     "@typescript-eslint/parser": "^8.58.0",
+    "esbuild": "^0.28.0",
     "eslint": "^10.2.0",
     "jest": "^30.3.0",
     "ts-node": "^10.9.2",
