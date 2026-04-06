@@ -1,14 +1,14 @@
 import http from 'http';
 import express from 'express';
 import path from 'path';
-import { APP_CONFIG } from './app/config/app.conf';
-import taskRoutes from './app/routes/Task.routes';
+import { APP_CONFIG } from './config/app.conf';
+import taskRoutes from './routes/Task.routes';
 
 const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Routes
 app.use('/api/task', taskRoutes);
