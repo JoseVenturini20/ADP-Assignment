@@ -38,10 +38,13 @@ export const findTopEarnerLastYear = (transactions: Transaction[]): string | nul
 };
 
 /**
- * Gets all transaction IDs where type is "alpha" for a given employee
+ * Gets last year's alpha transactions for a given employee
  */
-export const getAlphaTransactionIDs = (transactions: Transaction[], employeeId: string): string[] => {
-  return transactions
-    .filter((t) => t.employee.id === employeeId && t.type === 'alpha')
-    .map((t) => t.transactionID);
+export const getAlphaTransactions = (transactions: Transaction[], employeeId: string): Transaction[] => {
+  const lastYear = new Date().getFullYear() - 1;
+
+  return transactions.filter((t) => {
+    const year = new Date(t.timeStamp).getFullYear();
+    return t.employee.id === employeeId && t.type === 'alpha' && year === lastYear;
+  });
 };
