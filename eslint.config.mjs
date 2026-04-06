@@ -16,7 +16,7 @@ export default [
     },
     rules: {
       ...tseslint.configs.recommended.rules,
-      'no-console': 'warn',
+      'no-console': 'off',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'off',
